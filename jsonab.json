@@ -1,0 +1,122 @@
+[
+ {
+	"id": "0001",
+        "identifier" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "redirect",
+			"url": "http://support.adl.org/site/Donation2?4821.donation=form1&df_id=4821"
+		},
+	"active" : true
+},
+{
+	"id": "0002",
+        "identifier" :
+		{
+			"type" : "param",
+			"separator" : "&",
+			"param": "df_id",
+			"connector": "=",
+			"search": "test"
+		},
+	"action" :
+		{
+			"type": "redirect",
+			"url": "http://support.adl.org/site/Donation2?4821.donation=form1&df_id=4821"
+		},
+	"active" : true
+},
+{
+	"id": "0002.1",
+        "identifier" :
+		{
+			"type" : "param",
+			"separator" : "&",
+			"param": "test",
+			"connector": "=",
+			"search": "test"
+		},
+	"action" :
+		{
+			"type": "redirect",
+			"url": "http://support.adl.org/site/Donation2?4821.donation=form1&df_id=4821"
+		},
+	"active" : true
+},
+{
+	"id": "0002.2",
+        "identifier" :
+		{
+			"type" : "param",
+			"separator" : "",
+			"param": "test",
+			"connector": "",
+			"search": "test"
+		},
+	"action" :
+		{
+			"type": "redirect",
+			"url": "http://support.adl.org/site/Donation2?4821.donation=form1&df_id=4821"
+		},
+	"active" : true
+},
+{
+	"id": "0003",
+        "identifier" :
+		{
+			"type" : "seq",
+			"search" : "ab"
+		},
+	"action" :
+		{
+			"type": "redirect",
+			"url": "http://support.adl.org/site/Donation2?4821.donation=form1&df_id=4821"
+		},
+	"active" : true
+},
+{
+	"id": "0004",
+        "identifier" :
+		{
+			"type" : "seq-param",
+			"search" : ["development","ab"]
+		},
+	"action" :
+		{
+			"type": "redirect",
+			"url": "http://support.adl.org/site/Donation2?4821.donation=form1&df_id=4821"
+		},
+	"active" : true
+},
+{
+	"id": "0005",
+        "identifier" :
+		{
+			"type" : "all",
+			"search" : "empty"
+		},
+	"action" :
+		{
+			"type": "none"
+		},
+	"active" : true
+},
+{
+	"id": "0006",
+        "identifier" :
+		{
+			"type" : "error-test",
+			"search" : "empty"
+		},
+	"action" :
+		{
+			"type": "none",
+			"url": "why is it called URL anyways?"
+		},
+	"active" : true
+}
+]
