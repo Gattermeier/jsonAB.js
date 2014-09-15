@@ -17,7 +17,6 @@ all - always execute (don't do a rewrite action here ;)
 param - validate for a destinct parameter in the URL 
 seq - validate for a sequence in the URL
 seq-param - validate for a sequence AND a destinct parameter in the URL 
-tag - look for a tag with a specific
 elementclass - look for any DOM element with a specific class
 elementid - look for any DOM element with a specific ID
 bodyclass - look for a specific class in the body tag
@@ -31,7 +30,7 @@ VALID ACTION TYPES
 redirect - Redirect to a different page
 rewrite - Rewite a link to a different link,  for element(s) identified by class or ID. 
 prepend - Prepend an element with content, for element(s) identified by class or ID. 
-toggleClass - toggle between two classes, for element(s) identified by class or ID. 
+append - Append an element with content, for element(s) identified by class or ID. 
 removeClass - remove a Class from element, for element(s) identified by class or ID. 
 addClass - add a Class to element, for element(s) identified by class or ID.
 
@@ -48,11 +47,19 @@ function print(output) {
 function empty(str) {
         if(!!str){
                return true;
-        }
+        } else { return false; }
+}
+
+function exists(str) {
+        if ($(str).length > 0) {
+                return true;        
+        } else { return false; }
 }
 
 function random() {
-        if (Math.floor(Math.random()*2) == 1) { return true } else { return false }
+        if (Math.floor(Math.random()*2) == 1) {
+                return true;
+        } else { return false; }
 }
 
 
@@ -70,14 +77,14 @@ function redirect(json) {
 function rewrite(json) {
         if (random() == true) {
                 switch(json.action.element.type) {
-                                case "id":
-                                        document.getElementById(json.action.element.value).href = json.action.url;
-                                        break;
-                                case "class":
-                                        document.getElementsByClassName(json.action.element.value).href = json.action.url;
-                                        break;
-                                default:
-                                        break;
+                        case "id":
+                                document.getElementById(json.action.element.value).href = json.action.url;
+                                break;
+                        case "class":
+                                document.getElementsByClassName(json.action.element.value).href = json.action.url;
+                                break;
+                        default:
+                                break;
                         }
         }
         return false;
@@ -171,22 +178,14 @@ function identifyAction(json) {
                         default:
                                 return "undefined";
                                 break;
-                
                 }
-
 }
 
 // HELPER FUNCTIONS FOR PAGE VALIDATION
 
 
 function findUrlParam(separator, key, connector, value){
-        
-        
-       print(separator);
-       if (empty(separator)) {print("empty?")}
-       if (!(empty(separator))) {print("really empty")}
 
-       
        if (!empty(separator)) {separator ="&";}
        if (!empty(connector)) {connector ="=";}
        
@@ -212,6 +211,7 @@ function findUrlParam(separator, key, connector, value){
 // for all pages
 function all(json) {
         print("Selector: all");
+        identifyAction(json);
 }
 
 // search for a parameter in the current URL
@@ -257,16 +257,25 @@ function tag(json){
 function elementClass(json){
         print("Selector: elementClass");
         print("Search term: " + json.identifier.search);
+        if (exists('.'+json.identifier.search)) {
+                identifyAction(json);
+        } 
 }
 
 function elementID(json){
         print("Selector: elementID");
         print("Search term: " + json.identifier.search);
+        if (exists('#'+json.identifier.search)) {
+                identifyAction(json);
+        } 
 }
 
 function bodyClass(json){
         print("Selector: bodyClass");
         print("Search term: " + json.identifier.search);
+        if (exists('body.'+json.identifier.search)) {
+                identifyAction(json);
+        } 
 }
 
 
@@ -286,9 +295,6 @@ function processAB(json){
                 case "seq-param":
                         seqParam(json);
                         break;
-                case "tag":
-                        tag(json);
-                        break;
                 case "elementClass":
                         elementClass(json);
                         break;
@@ -298,9 +304,6 @@ function processAB(json){
                 case "bodyClass":
                         bodyClass(json);
                         break;
-                //case "seq-id":
-                //        seqID(json);
-                //        break;
                 default:
                     print("error identifying selector: "+ json.identifier.type);
         }
@@ -308,18 +311,16 @@ function processAB(json){
 
 // ------- //
 
-// read the json file with the A/B tests as configured
-function read_json(path) {
-        if (empty(path)) {print("ops")}
+
+// here is where the magic starts
+function ab(path){
         jQuery.getJSON(path, function(data){
-                var json = data;
-                var json_container = [];
-                $.each(json, function(i, record) {
+                var json = [];
+                $.each(data, function(i, record) {
                         if (record.active == true) {
-                            json_container.push(record);
+                            json.push(record);
                         }
                 });
-                json = json_container;
             })
         .done(function(json) {
                 for (i = 0; i < json.length; i++) {
@@ -330,13 +331,7 @@ function read_json(path) {
                 print( "\nError .. likely some issue with the json file" );
                 })
         .always(function() {
-                print( "\nComplete.. all objects in json iterated" );
+                print( "\n");
         });
-    };
-
-
-// here is where the magic starts
-function ab(path){ 
-        read_json(path);
         return this;
 }

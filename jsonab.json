@@ -231,7 +231,24 @@
 		},
 	"active" : true
 },
-
+{
+	"id": "0012",
+        "identifier" :
+		{
+			"type" : "elementClass",
+			"search" : "link"
+		},
+	"action" :
+		{
+			"type": "append",
+			"element": {
+				"type": "class",
+				"value": "appendthis"
+			},
+			"value": "<h2>Here we appended some text in an H2 tag :)</h2>"
+		},
+	"active" : true
+},
 {
 	"id": "1000",
         "identifier" :
