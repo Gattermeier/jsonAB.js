@@ -4,7 +4,7 @@
         "identifier" :
 		{
 			"type" : "seq",
-			"search" : "gattermeier"
+			"search" : "gasadfttermeierrr"
 		},
 	"action" :
 		{
@@ -69,7 +69,7 @@
         "identifier" :
 		{
 			"type" : "seq",
-			"search" : "ab"
+			"search" : "sdfgsdfgdf"
 		},
 	"action" :
 		{
@@ -107,6 +107,133 @@
 },
 {
 	"id": "0006",
+        "identifier" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "rewrite",
+			"element": {
+				"type": "id",
+				"value": "link"
+			},
+			"url": "http://support.adl.org/site/Donation2?4821.donation=form1&df_id=4821"
+		},
+	"active" : true
+},
+{
+	"id": "0007",
+        "identifier" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "addClass",
+			"element": {
+				"type": "id",
+				"value": "link"
+			},
+			"value": "newclass"
+		},
+	"active" : true
+},
+{
+	"id": "0008",
+        "identifier" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "addClass",
+			"element": {
+				"type": "class",
+				"value": "link"
+			},
+			"value": "newclass"
+		},
+	"active" : true
+},
+{
+	"id": "0009",
+        "identifier" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "removeClass",
+			"element": {
+				"type": "id",
+				"value": "removelink"
+			},
+			"value": "removethis"
+		},
+	"active" : true
+},
+{
+	"id": "0010",
+        "identifier" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "removeClass",
+			"element": {
+				"type": "class",
+				"value": "removeclass"
+			},
+			"value": "removethis"
+		},
+	"active" : true
+},
+{
+	"id": "0011",
+        "identifier" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "prepend",
+			"element": {
+				"type": "class",
+				"value": "prependthis"
+			},
+			"value": "<h2>Here we prepended some text in an H2 tag :)</h2>"
+		},
+	"active" : true
+},
+{
+	"id": "0011",
+        "identifier" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "append",
+			"element": {
+				"type": "class",
+				"value": "appendthis"
+			},
+			"value": "<h2>Here we appended some text in an H2 tag :)</h2>"
+		},
+	"active" : true
+},
+
+{
+	"id": "1000",
         "identifier" :
 		{
 			"type" : "error-test",
