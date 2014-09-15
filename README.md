@@ -13,6 +13,6 @@ Before updating, please check in detail any version changes.
 Download the [master.zip](https://github.com/Gattermeier/jsonAB.js/archive/master.zip)  
 Or clone in GitHub: git clone https://github.com/gattermeier/jsonab.js.git
 
-Add this before the body closing tag
+Add this before the body closing tag   
 `<script src="./jsonab.js"></script>`   
 `<script>ab("./jsonAB.json");</script>`
