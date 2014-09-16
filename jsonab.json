@@ -1,7 +1,7 @@
 [
  {
 	"id": "0001",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "seq",
 			"search" : "gasadfttermeierrr"
@@ -15,7 +15,7 @@
 },
 {
 	"id": "0002",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "param",
 			"separator" : "&",
@@ -32,7 +32,7 @@
 },
 {
 	"id": "0002.1",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "param",
 			"separator" : "&",
@@ -49,7 +49,7 @@
 },
 {
 	"id": "0002.2",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "param",
 			"separator" : "",
@@ -66,7 +66,7 @@
 },
 {
 	"id": "0003",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "seq",
 			"search" : "sdfgsdfgdf"
@@ -80,7 +80,7 @@
 },
 {
 	"id": "0004",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "seq-param",
 			"search" : ["development","ab"]
@@ -94,7 +94,7 @@
 },
 {
 	"id": "0005",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "all",
 			"search" : "empty"
@@ -107,7 +107,7 @@
 },
 {
 	"id": "0006",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "seq",
 			"search" : "gattermeier"
@@ -125,7 +125,7 @@
 },
 {
 	"id": "0007",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "seq",
 			"search" : "gattermeier"
@@ -143,7 +143,7 @@
 },
 {
 	"id": "0008",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "seq",
 			"search" : "gattermeier"
@@ -161,7 +161,7 @@
 },
 {
 	"id": "0009",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "seq",
 			"search" : "gattermeier"
@@ -179,7 +179,7 @@
 },
 {
 	"id": "0010",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "seq",
 			"search" : "gattermeier"
@@ -197,7 +197,7 @@
 },
 {
 	"id": "0011",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "seq",
 			"search" : "gattermeier"
@@ -215,7 +215,7 @@
 },
 {
 	"id": "0011",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "seq",
 			"search" : "gattermeier"
@@ -233,7 +233,7 @@
 },
 {
 	"id": "0012",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "elementClass",
 			"search" : "link"
@@ -251,7 +251,7 @@
 },
 {
 	"id": "1000",
-        "identifier" :
+        "condition" :
 		{
 			"type" : "error-test",
 			"search" : "empty"

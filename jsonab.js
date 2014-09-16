@@ -11,7 +11,7 @@
 
 
 /*
-VALID PAGE CONDTIONS (IDENTIFIER TYPES)
+VALID PAGE CONDTIONS
 
 all - always execute (don't do a rewrite action here ;)
 param - validate for a destinct parameter in the URL 
@@ -216,8 +216,8 @@ function all(json) {
 
 // search for a parameter in the current URL
 function param(json) {
-        print('Selector: param for:' + json.identifier.separator + json.identifier.param + json.identifier.connector + json.identifier.search);
-        var value = findUrlParam(json.identifier.separator, json.identifier.param, json.identifier.connector, json.identifier.search);
+        print('Selector: param for:' + json.condition.separator + json.condition.param + json.condition.connector + json.condition.search);
+        var value = findUrlParam(json.condition.separator, json.condition.param, json.condition.connector, json.condition.search);
         switch(value) {
                 case true:
                         print('case ' + true);
@@ -237,8 +237,8 @@ function param(json) {
 // search for a character sequence in the current URL
 function seq(json) {
         print("Selector: seq");
-        print("Search term: " + json.identifier.search);
-        if (window.location.href.indexOf( json.identifier.search ) >= 0) {
+        print("Search term: " + json.condition.search);
+        if (window.location.href.indexOf( json.condition.search ) >= 0) {
                 identifyAction(json);
         }                    
 }
@@ -246,34 +246,34 @@ function seq(json) {
 // search for a character sequence and a parameter in the current URL
 function seqParam(json){
         print("Selector: seq-param");
-        print("Search term: " + json.identifier.search);
+        print("Search term: " + json.condition.search);
 }
 
 function tag(json){
         print("Selector: tag");
-        print("Search term: " + json.identifier.search);
+        print("Search term: " + json.condition.search);
 }
 
 function elementClass(json){
         print("Selector: elementClass");
-        print("Search term: " + json.identifier.search);
-        if (exists('.'+json.identifier.search)) {
+        print("Search term: " + json.condition.search);
+        if (exists('.'+json.condition.search)) {
                 identifyAction(json);
         } 
 }
 
 function elementID(json){
         print("Selector: elementID");
-        print("Search term: " + json.identifier.search);
-        if (exists('#'+json.identifier.search)) {
+        print("Search term: " + json.condition.search);
+        if (exists('#'+json.condition.search)) {
                 identifyAction(json);
         } 
 }
 
 function bodyClass(json){
         print("Selector: bodyClass");
-        print("Search term: " + json.identifier.search);
-        if (exists('body.'+json.identifier.search)) {
+        print("Search term: " + json.condition.search);
+        if (exists('body.'+json.condition.search)) {
                 identifyAction(json);
         } 
 }
@@ -282,7 +282,7 @@ function bodyClass(json){
 // start processing AB for the individual json entry by processing the selector (identify the condition)
 function processAB(json){
         print("\nProcessing entry: "+ json.id);
-        switch(json.identifier.type) {
+        switch(json.condition.type) {
                 case "all":
                         all(json);
                         break;
@@ -305,7 +305,7 @@ function processAB(json){
                         bodyClass(json);
                         break;
                 default:
-                    print("error identifying selector: "+ json.identifier.type);
+                    print("error identifying selector: "+ json.condition.type);
         }
 }
 
