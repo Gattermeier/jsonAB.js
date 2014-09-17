@@ -6,6 +6,7 @@
 
 > Eventually page validation conditionals should be AND not OR, via an array.
 > json config should be created & edited via a form driven backend (node, angular)
+> needs working Google Analytics support.. 
 
 */
 
@@ -62,7 +63,24 @@ function random() {
         } else { return false; }
 }
 
+// TRACKING
 
+function track(){
+      if (!(ga.hasOwnProperty('loaded') && ga.loaded === true)) {
+            print('Google Universal Analtics found.. ');
+            print(ga);
+      } else {
+            print('GA property not loaded. Make sure Google Analytics is loaded before calling jsonAB.');
+            }
+}
+
+function trackEvent(){
+      print("track event");
+}
+
+function trackCustomVariable(){
+      print("track custom variable");
+}
 
 // ACTIONS TO EXECUTE A/B FOR
 
@@ -332,6 +350,6 @@ function ab(path){
                 })
         .always(function() {
                 print( "\n");
-        });
-        return this;
+        });        
+       return this;
 }

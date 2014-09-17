@@ -1,0 +1,113 @@
+[
+{
+	"id": "redirect",
+        "condition" :
+		{
+			"type" : "param",
+			"separator" : "&",
+			"param": "param",
+			"connector": "=",
+			"search": "value"
+		},
+	"action" :
+		{
+			"type": "redirect",
+			"url": "http://www.gattermeier.net"
+		},
+	"tracking" : {
+			"type": "google",
+			"slot" : ""
+		},
+	"active" : true
+},
+{
+	"id": "rewrite",
+        "condition" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "rewrite",
+			"element": {
+				"type": "id",
+				"value": "jsonab_rewrite"
+			},
+			"url": "http://www.google.com"
+		},
+	"active" : true
+},
+{
+	"id": "addClass",
+        "condition" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "addClass",
+			"element": {
+				"type": "id",
+				"value": "jsonab_addclass"
+			},
+			"value": "red"
+		},
+	"active" : true
+},
+{
+	"id": "removeClass",
+        "condition" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "removeClass",
+			"element": {
+				"type": "id",
+				"value": "jsonab_removeclass"
+			},
+			"value": "red"
+		},
+	"active" : true
+},
+{
+	"id": "prepend",
+        "condition" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "prepend",
+			"element": {
+				"type": "id",
+				"value": "jsonab_prepend"
+			},
+			"value": " :) "
+		},
+	"active" : true
+},
+{
+	"id": "append",
+        "condition" :
+		{
+			"type" : "seq",
+			"search" : "gattermeier"
+		},
+	"action" :
+		{
+			"type": "append",
+			"element": {
+				"type": "id",
+				"value": "jsonab_append"
+			},
+			"value": "<span style='font-style: italic'>, with this text..</span>"
+		},
+	"active" : true
+}
+]
