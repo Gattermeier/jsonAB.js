@@ -6,7 +6,6 @@
 
 > Eventually page validation conditionals should be AND not OR, via an array.
 > json config should be created & edited via a form driven backend (node, angular)
-> needs working Google Analytics support.. 
 
 */
 
@@ -65,17 +64,36 @@ function random() {
 
 // TRACKING
 
-function track(){
-      if (!(ga.hasOwnProperty('loaded') && ga.loaded === true)) {
-            print('Google Universal Analtics found.. ');
-            print(ga);
-      } else {
-            print('GA property not loaded. Make sure Google Analytics is loaded before calling jsonAB.');
-            }
+function track(json, ab){
+      
+      if ((json.tracking.vendor == "google") && (json.tracking.type == "event")) {
+            //if (!(ga.hasOwnProperty('loaded') && ga.loaded === true)) {
+                  trackEvent(json, ab);      
+           // } else {
+           // print('GA property not loaded. Make sure Google Analytics is loaded before calling jsonAB.');
+           // }  
+      }
+      
 }
 
-function trackEvent(){
+function trackEvent(json, ab){
       print("track event");
+      var eventLabel ='';
+      print(ab);
+      if (true == ab) {
+            eventLabel = json.tracking.event.valuetrue;
+            } else {
+            eventLabel = json.tracking.event.valuefalse;
+            }
+      $('.'+json.tracking.event.elementClass).on(json.tracking.event.event, function() {
+            ga('send', {
+                  'hitType': 'event',          // Required.
+                  'eventCategory': 'jsonAB-'+json.id,   // Required.
+                  'eventAction': json.tracking.event.event,      // Required.
+                  'eventLabel': eventLabel,
+                  'eventValue': 1
+            });
+      });
 }
 
 function trackCustomVariable(){
@@ -93,18 +111,28 @@ function redirect(json) {
 }
 
 function rewrite(json) {
-        if (random() == true) {
+      
+        
                 switch(json.action.element.type) {
                         case "id":
-                                document.getElementById(json.action.element.value).href = json.action.url;
+                                if (random() == true) {
+                                    document.getElementById(json.action.element.value).href = json.action.url;
+                                    track(json, true); }
+                                    else {
+                                          track(json, false); 
+                                    }
                                 break;
                         case "class":
+                              if (random() == true) {
                                 document.getElementsByClassName(json.action.element.value).href = json.action.url;
+                                track(json, true); }
+                                else {
+                                    track(json, false); 
+                                }
                                 break;
                         default:
                                 break;
                         }
-        }
         return false;
 }
 
@@ -350,6 +378,7 @@ function ab(path){
                 })
         .always(function() {
                 print( "\n");
-        });        
+        });
+        
        return this;
 }

@@ -14,14 +14,10 @@
 			"type": "redirect",
 			"url": "http://www.gattermeier.net"
 		},
-	"tracking" : {
-			"type": "google",
-			"slot" : ""
-		},
 	"active" : true
 },
 {
-	"id": "rewrite",
+	"id": "rewrite_case_1",
         "condition" :
 		{
 			"type" : "seq",
@@ -35,6 +31,17 @@
 				"value": "jsonab_rewrite"
 			},
 			"url": "http://www.google.com"
+		},
+	"tracking" : {
+			"vendor": "google",
+			"type": "event",
+			"slot" : "",
+			"event" : {
+				"event" : "click",
+				"elementClass" : "jsonABevent-click",
+				"valuetrue" : "option A",
+				"valuefalse" : "option B"
+			}
 		},
 	"active" : true
 },
